@@ -3,6 +3,10 @@ import daunLontara from "./imageHal/daunlontarafix2.png";
 import bckgrnd from "../../img/background.svg";
 import daunlontarabawah from "./imageHal/daunlonatarabawah.png";
 import rumahtoraja from "./imageHal/rumahtoraja.png";
+import dataku from "../../dataku.json";
+
+const pengantiPria = dataku.namaPria;
+const pengantinWanita = dataku.namaWanita;
 
 export default function HalIntroduction() {
   return (
@@ -112,13 +116,13 @@ export default function HalIntroduction() {
                 </div>
                 <div className="w-full">
                   <p className="w-full flex justify-center font-secondchild text-[64px] text-[#376D41] leading-snug">
-                    Fadly
+                    {pengantiPria}
                   </p>
                   <p className="w-full flex justify-center font-carmitta text-[64px] leading-snug text-[#376D41]">
                     &
                   </p>
                   <p className="w-full flex justify-center text-[64px] font-secondchild text-[#376D41] leading-snug">
-                    Ainun
+                    {pengantinWanita}
                   </p>
                 </div>
               </motion.div>
