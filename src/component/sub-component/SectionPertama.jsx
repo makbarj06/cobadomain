@@ -5,7 +5,7 @@ import bckgrnd from "../../img/background.svg";
 import daunlontarabawah from "./imageHal/daunlonatarabawah.png";
 import rumahtoraja from "./imageHal/rumahtoraja.png";
 import dataku from "../../dataku.json";
-import audioFile from "../../audio/Lagu Bugis Lirik dan terjemahan - Alosi Ripolo Dua.mp3"; // Ganti dengan path audio Anda
+import audioFile from "../../audio/OFFICIAL Video clip SAJENG RENNU Ost SILARIANG -  Art2tonic feat IKA KDI.mp3"; // Ganti dengan path audio Anda
 
 const pengantiPria = dataku.namaPria;
 const pengantinWanita = dataku.namaWanita;
@@ -17,22 +17,25 @@ export default function HalIntroduction() {
     const audioElement = audioRef.current;
 
     if (audioElement) {
-      // Set currentTime untuk melompat ke menit tertentu (contoh: 60 detik)
-      audioElement.currentTime = 9; // Ganti dengan waktu yang diinginkan dalam detik
-
-      // Mulai pemutaran audio
+      // Set waktu mulai audio (contoh: 78 detik / 1 menit 18 detik)
+      audioElement.currentTime = 78;
       audioElement.play();
 
-      const handleEnded = () => {
-        console.log("Audio finished playing");
-        // Tambahkan tindakan lain jika diperlukan saat audio selesai
+      // Hentikan audio setelah waktu akhir (contoh: 152 detik / 2 menit 32 detik)
+      const endTime = 152; // Waktu akhir dalam detik
+      const duration = endTime - 78; // Durasi yang akan diputar
+      const stopPlayback = () => {
+        if (audioElement) {
+          audioElement.pause();
+          audioElement.currentTime = 78; // Kembali ke waktu mulai
+        }
       };
 
-      audioElement.addEventListener("ended", handleEnded);
+      // Hentikan audio setelah durasi
+      const timer = setTimeout(stopPlayback, duration * 1000); // Durasi dalam milidetik
 
-      return () => {
-        audioElement.removeEventListener("ended", handleEnded);
-      };
+      // Clean up timer on component unmount
+      return () => clearTimeout(timer);
     }
   }, []);
 
@@ -51,8 +54,8 @@ export default function HalIntroduction() {
           src={daunLontara}
           alt=""
           className="absolute top-0"
-          initial={{ x: "-100vw" }} // Mulai dari luar layar di kiri
-          animate={{ x: 0 }} // Bergerak ke posisi aslinya
+          initial={{ x: "-100vw", opacity: 0 }} // Titik awal animasi
+          animate={{ x: 0, opacity: 1 }} // Titik akhir animasi
           transition={{
             type: "spring",
             stiffness: 50,
@@ -66,8 +69,8 @@ export default function HalIntroduction() {
           src={daunlontarabawah}
           alt=""
           className="absolute bottom-0 right-0"
-          initial={{ x: "100vw" }} // Mulai dari luar layar di kanan
-          animate={{ x: 0 }} // Bergerak ke posisi aslinya
+          initial={{ x: "100vw", opacity: 0 }} // Titik awal animasi
+          animate={{ x: 0, opacity: 1 }} // Titik akhir animasi
           transition={{
             type: "spring",
             stiffness: 50,
