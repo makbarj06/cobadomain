@@ -1,16 +1,45 @@
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import daunLontara from "./imageHal/daunlontarafix2.png";
 import bckgrnd from "../../img/background.svg";
 import daunlontarabawah from "./imageHal/daunlonatarabawah.png";
 import rumahtoraja from "./imageHal/rumahtoraja.png";
 import dataku from "../../dataku.json";
+import audioFile from "../../audio/Lagu Bugis Lirik dan terjemahan - Alosi Ripolo Dua.mp3"; // Ganti dengan path audio Anda
 
 const pengantiPria = dataku.namaPria;
 const pengantinWanita = dataku.namaWanita;
 
 export default function HalIntroduction() {
+  const audioRef = useRef(null);
+
+  useEffect(() => {
+    const audioElement = audioRef.current;
+
+    if (audioElement) {
+      // Set currentTime untuk melompat ke menit tertentu (contoh: 60 detik)
+      audioElement.currentTime = 9; // Ganti dengan waktu yang diinginkan dalam detik
+
+      // Mulai pemutaran audio
+      audioElement.play();
+
+      const handleEnded = () => {
+        console.log("Audio finished playing");
+        // Tambahkan tindakan lain jika diperlukan saat audio selesai
+      };
+
+      audioElement.addEventListener("ended", handleEnded);
+
+      return () => {
+        audioElement.removeEventListener("ended", handleEnded);
+      };
+    }
+  }, []);
+
   return (
     <div className="w-full h-[861px] overflow-hidden xl:flex justify-center">
+      <audio ref={audioRef} src={audioFile} />
+
       <div
         className="xl:w-[360px] w-full h-[770px] relative"
         style={{
