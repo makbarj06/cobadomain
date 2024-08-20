@@ -1,43 +1,52 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import daunLontara from "./imageHal/daunlontarafix2.png";
 import bckgrnd from "../../img/background.svg";
 import daunlontarabawah from "./imageHal/daunlonatarabawah.png";
 import rumahtoraja from "./imageHal/rumahtoraja.png";
 import dataku from "../../dataku.json";
-import audioFile from "../../audio/OFFICIAL Video clip SAJENG RENNU Ost SILARIANG -  Art2tonic feat IKA KDI.mp3"; // Ganti dengan path audio Anda
+import audioFile from "../../audio/OFFICIAL Video clip SAJENG RENNU Ost SILARIANG -  Art2tonic feat IKA KDI.mp3";
 
 const pengantiPria = dataku.namaPria;
 const pengantinWanita = dataku.namaWanita;
 
 export default function HalIntroduction() {
   const audioRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(true);
 
   useEffect(() => {
     const audioElement = audioRef.current;
 
     if (audioElement) {
-      // Set waktu mulai audio (contoh: 78 detik / 1 menit 18 detik)
       audioElement.currentTime = 78;
       audioElement.play();
 
-      // Hentikan audio setelah waktu akhir (contoh: 152 detik / 2 menit 32 detik)
-      const endTime = 152; // Waktu akhir dalam detik
-      const duration = endTime - 78; // Durasi yang akan diputar
+      const endTime = 152;
+      const duration = endTime - 78;
       const stopPlayback = () => {
         if (audioElement) {
           audioElement.pause();
-          audioElement.currentTime = 78; // Kembali ke waktu mulai
+          audioElement.currentTime = 78;
         }
       };
 
-      // Hentikan audio setelah durasi
-      const timer = setTimeout(stopPlayback, duration * 1000); // Durasi dalam milidetik
+      const timer = setTimeout(stopPlayback, duration * 1000);
 
-      // Clean up timer on component unmount
       return () => clearTimeout(timer);
     }
   }, []);
+
+  const togglePlayPause = () => {
+    const audioElement = audioRef.current;
+    if (audioElement) {
+      if (isPlaying) {
+        audioElement.pause();
+      } else {
+        audioElement.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
 
   return (
     <div className="w-full h-[861px] overflow-hidden xl:flex justify-center">
@@ -160,6 +169,46 @@ export default function HalIntroduction() {
               </motion.div>
             </div>
           </div>
+        </div>
+        {/* Play/Pause Button */}
+        <div className="fixed bottom-44 right-2">
+          <button
+            onClick={togglePlayPause}
+            className="p-2 bg-[#376D41] text-white rounded-full shadow-lg focus:outline-none"
+          >
+            {isPlaying ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="feather feather-pause"
+              >
+                <rect x="6" y="4" width="4" height="16"></rect>
+                <rect x="14" y="4" width="4" height="16"></rect>
+              </svg>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="feather feather-play"
+              >
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            )}
+          </button>
         </div>
       </div>
     </div>

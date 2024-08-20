@@ -162,7 +162,7 @@ export default function Cover() {
                     className="px-3 sm:px-8 py-1 mt-2 text-xs font-medium text-center inline-flex items-center text-white bg-gradient-to-r from-[#386E42] to-[#3D4827] rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ duration: 1 }}
+                    transition={{ duration: 1, delay: 1 }}
                     onClick={handleButtonClick} // Menangani klik tombol
                   >
                     <svg
