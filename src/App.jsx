@@ -1,15 +1,18 @@
 import { Routes, Route } from "react-router-dom";
-import Cover from "./component/Cover";
-import HalUndangan from "./component/HalUndangan";
+import { Suspense, lazy } from "react";
+
+// Lazy load components
+const Cover = lazy(() => import("./component/Cover"));
+const HalUndangan = lazy(() => import("./component/HalUndangan"));
 
 function App() {
   return (
-    <>
-      <Routes>
-        <Route path="/:id" element={<Cover />} />
-        <Route path="/:id/aninvitation" element={<HalUndangan />} />
-      </Routes>
-    </>
+    // <Suspense fallback={<div>Loading...</div>}>
+    <Routes>
+      <Route path="/:id" element={<Cover />} />
+      <Route path="/:id/aninvitation" element={<HalUndangan />} />
+    </Routes>
+    // </Suspense>
   );
 }
 

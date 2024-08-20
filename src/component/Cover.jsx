@@ -108,13 +108,13 @@ export default function Cover() {
                   <img
                     src={fotoPernikahan}
                     alt="Foto Pernikahan"
-                    className="w-[300px] sm:w-[500px] xl:w-[300px] mr-2 sm:mr-5 sm:-mt-5 -mt-5 "
+                    className="w-[330px] sm:w-[500px] xl:w-[300px] mr-2 sm:mr-5 sm:-mt-5 -mt-5 "
                   />
                 </motion.div>
               )}
               {isBackgroundComplete && (
                 <motion.div
-                  className="flex justify-center font-sarlotte text-[#376D41] xl:text-sm text-sm mt-2 sm:text-[24px]"
+                  className="flex justify-center font-sarlotte text-[#376D41] xl:text-sm text-sm mt-1 mb-1  sm:text-[24px]"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 1, delay: 1 }}
@@ -124,7 +124,7 @@ export default function Cover() {
               )}
               {isBackgroundComplete && (
                 <motion.div
-                  className="flex justify-center font-sarlotte sm:mt-2 -mt-1 xl:text-sm xl:mt-0 text-[#376D41] text-sm sm:text-[24px]"
+                  className="flex justify-center font-sarlotte sm:mt-2  xl:text-sm xl:mt-0 text-[#376D41] mt-2 text-sm sm:text-[24px]"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 1, delay: 1 }}
@@ -134,7 +134,7 @@ export default function Cover() {
               )}
               {isBackgroundComplete && (
                 <motion.div
-                  className="flex justify-center font-myflora sm:mt-8 xl:text-sm xl:mt-0 text-[#376D41] text-2xl sm:text-[50px]"
+                  className="flex justify-center mt-3  font-myflora sm:mt-8 xl:text-sm xl:mt-0 text-[#376D41] text-3xl  sm:text-[50px]"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 1, delay: 1 }}
@@ -144,7 +144,7 @@ export default function Cover() {
               )}
               {isBackgroundComplete && (
                 <motion.div
-                  className="flex justify-center font-sarlotte sm:mt-8 xl:text-[10px] xl:text-xs xl:mt-0 text-[#376D41] text-[10px] sm:text-xl"
+                  className="flex justify-center font-sarlotte sm:mt-8 xl:text-[10px] xl:text-xs xl:mt-0 text-[#376D41] text-[13px] mt-3 sm:text-xl"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 1, delay: 1 }}
@@ -162,7 +162,7 @@ export default function Cover() {
                     className="px-3 sm:px-8 py-1 mt-2 text-xs font-medium text-center inline-flex items-center text-white bg-gradient-to-r from-[#386E42] to-[#3D4827] rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ duration: 1 }}
+                    transition={{ duration: 1, delay: 1 }}
                     onClick={handleButtonClick} // Menangani klik tombol
                   >
                     <svg
@@ -183,7 +183,7 @@ export default function Cover() {
           </div>
         </motion.div>
         <motion.div
-          className="h-[15%] bg-repeat-x sm:bg-[50%,0%] sm:h-[12%] xl:h-[20%] xl:bg-no-repeat xl:bg-cover"
+          className="h-[15%] bg-no-repeat bg-cover sm:bg-[50%,0%] sm:h-[12%] xl:h-[20%] xl:bg-no-repeat xl:bg-cover sm:bg-repeat-x "
           style={{ backgroundImage: `url(${lammingBawah})` }}
           initial={{ y: "100%" }}
           animate={{ y: "0%" }}

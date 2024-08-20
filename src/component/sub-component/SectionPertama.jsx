@@ -1,48 +1,17 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import daunLontara from "./imageHal/daunlontarafix2.png";
 import bckgrnd from "../../img/background.svg";
 import daunlontarabawah from "./imageHal/daunlonatarabawah.png";
 import rumahtoraja from "./imageHal/rumahtoraja.png";
 import dataku from "../../dataku.json";
-import audioFile from "../../audio/OFFICIAL Video clip SAJENG RENNU Ost SILARIANG -  Art2tonic feat IKA KDI.mp3"; // Ganti dengan path audio Anda
 
 const pengantiPria = dataku.namaPria;
 const pengantinWanita = dataku.namaWanita;
 
 export default function HalIntroduction() {
-  const audioRef = useRef(null);
-
-  useEffect(() => {
-    const audioElement = audioRef.current;
-
-    if (audioElement) {
-      // Set waktu mulai audio (contoh: 78 detik / 1 menit 18 detik)
-      audioElement.currentTime = 78;
-      audioElement.play();
-
-      // Hentikan audio setelah waktu akhir (contoh: 152 detik / 2 menit 32 detik)
-      const endTime = 152; // Waktu akhir dalam detik
-      const duration = endTime - 78; // Durasi yang akan diputar
-      const stopPlayback = () => {
-        if (audioElement) {
-          audioElement.pause();
-          audioElement.currentTime = 78; // Kembali ke waktu mulai
-        }
-      };
-
-      // Hentikan audio setelah durasi
-      const timer = setTimeout(stopPlayback, duration * 1000); // Durasi dalam milidetik
-
-      // Clean up timer on component unmount
-      return () => clearTimeout(timer);
-    }
-  }, []);
-
   return (
     <div className="w-full h-[861px] overflow-hidden xl:flex justify-center">
-      <audio ref={audioRef} src={audioFile} />
-
       <div
         className="xl:w-[360px] w-full h-[770px] relative"
         style={{
