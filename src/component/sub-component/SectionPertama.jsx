@@ -5,53 +5,13 @@ import bckgrnd from "../../img/background.svg";
 import daunlontarabawah from "./imageHal/daunlonatarabawah.png";
 import rumahtoraja from "./imageHal/rumahtoraja.png";
 import dataku from "../../dataku.json";
-import audioFile from "../../audio/OFFICIAL Video clip SAJENG RENNU Ost SILARIANG -  Art2tonic feat IKA KDI.mp3";
 
 const pengantiPria = dataku.namaPria;
 const pengantinWanita = dataku.namaWanita;
 
 export default function HalIntroduction() {
-  const audioRef = useRef(null);
-  const [isPlaying, setIsPlaying] = useState(true);
-
-  useEffect(() => {
-    const audioElement = audioRef.current;
-
-    if (audioElement) {
-      audioElement.currentTime = 78;
-      audioElement.play();
-
-      const endTime = 152;
-      const duration = endTime - 78;
-      const stopPlayback = () => {
-        if (audioElement) {
-          audioElement.pause();
-          audioElement.currentTime = 78;
-        }
-      };
-
-      const timer = setTimeout(stopPlayback, duration * 1000);
-
-      return () => clearTimeout(timer);
-    }
-  }, []);
-
-  const togglePlayPause = () => {
-    const audioElement = audioRef.current;
-    if (audioElement) {
-      if (isPlaying) {
-        audioElement.pause();
-      } else {
-        audioElement.play();
-      }
-      setIsPlaying(!isPlaying);
-    }
-  };
-
   return (
     <div className="w-full h-[861px] overflow-hidden xl:flex justify-center">
-      <audio ref={audioRef} src={audioFile} />
-
       <div
         className="xl:w-[360px] w-full h-[770px] relative"
         style={{
@@ -169,46 +129,6 @@ export default function HalIntroduction() {
               </motion.div>
             </div>
           </div>
-        </div>
-        {/* Play/Pause Button */}
-        <div className="fixed bottom-44 right-2">
-          <button
-            onClick={togglePlayPause}
-            className="p-2 bg-[#376D41] text-white rounded-full shadow-lg focus:outline-none"
-          >
-            {isPlaying ? (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="feather feather-pause"
-              >
-                <rect x="6" y="4" width="4" height="16"></rect>
-                <rect x="14" y="4" width="4" height="16"></rect>
-              </svg>
-            ) : (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="feather feather-play"
-              >
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-            )}
-          </button>
         </div>
       </div>
     </div>
