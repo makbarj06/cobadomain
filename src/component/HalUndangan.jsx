@@ -1,31 +1,30 @@
-import { useRef, useEffect } from "react";
+import React, { useEffect } from "react";
+import { Howl } from "howler";
+import bgaudio from "../audio/OFFICIAL Video clip SAJENG RENNU Ost SILARIANG -  Art2tonic feat IKA KDI.mp3";
 import HalIntroduction from "./sub-component/SectionPertama";
-import backgroundMusic from "../audio/OFFICIAL Video clip SAJENG RENNU Ost SILARIANG -  Art2tonic feat IKA KDI.mp3";
 
-export default function HalUndangan() {
-  const audioRef = useRef(null);
-
+function HalUndangan() {
   useEffect(() => {
-    if (audioRef.current) {
-      const startTime = 79; // Detik ke-79 (1:19)
-      const endTime = 151; // Detik ke-151 (2:31)
+    // Membuat instance Howl dan memutar audio secara otomatis saat komponen dimuat
+    const sound = new Howl({
+      src: [bgaudio],
+      autoplay: true, // Memutar audio secara otomatis
+      onend: () => {
+        console.log("Audio finished playing");
+      },
+    });
 
-      audioRef.current.currentTime = startTime;
-      audioRef.current.play();
-
-      const timer = setTimeout(() => {
-        audioRef.current.pause();
-        audioRef.current.currentTime = startTime; // Reset posisi musik
-      }, (endTime - startTime) * 1000);
-
-      return () => clearTimeout(timer);
-    }
-  });
+    // Opsional: Hentikan audio ketika komponen unmount
+    return () => {
+      sound.unload();
+    };
+  }, []); // Array dependensi kosong berarti effect ini hanya dijalankan saat mount
 
   return (
-    <>
-      <audio ref={audioRef} src={backgroundMusic} preload="auto" />
+    <div>
       <HalIntroduction />
-    </>
+    </div>
   );
 }
+
+export default HalUndangan;
