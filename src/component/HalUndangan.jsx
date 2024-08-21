@@ -2,7 +2,6 @@ import { Howl } from "howler";
 import bgaudio from "../audio/OFFICIAL Video clip SAJENG RENNU Ost SILARIANG -  Art2tonic feat IKA KDI.mp3";
 import HalIntroduction from "./sub-component/SectionPertama";
 import RangkaianAcaraAdat from "./sub-component/RangkaianAcaraAdat";
-import AyatDoa from "./sub-component/ayatDoa";
 
 function HalUndangan() {
   // useEffect(() => {
@@ -24,7 +23,7 @@ function HalUndangan() {
   return (
     <div>
       <HalIntroduction />
-      <AyatDoa />
+
       <RangkaianAcaraAdat />
     </div>
   );
