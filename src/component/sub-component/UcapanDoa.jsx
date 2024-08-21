@@ -1,7 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
-export default function AyatDoa() {
+export default function UcapanDoa() {
   // Menggunakan useRef untuk mereferensikan elemen paragraf
   const ref = useRef(null);
   // Menggunakan useInView untuk memantau apakah paragraf terlihat di viewport
