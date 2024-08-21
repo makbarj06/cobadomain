@@ -21,3 +21,8 @@
   font-family: "secondchild";
   src: url("./font/SecondChild.otf");
 }
+
+@font-face {
+  font-family: "rosseti";
+  src: url("./font/Rosseti-Light.ttf");
+}

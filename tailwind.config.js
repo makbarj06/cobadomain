@@ -8,6 +8,7 @@ export default {
         carmitta: "carmitta",
         myflora: "myflora",
         secondchild: "secondchild",
+        rosseti: "rosseti",
       },
     },
   },
