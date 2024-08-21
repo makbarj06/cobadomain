@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Howl } from "howler";
 import bgaudio from "../audio/OFFICIAL Video clip SAJENG RENNU Ost SILARIANG -  Art2tonic feat IKA KDI.mp3";
 import HalIntroduction from "./sub-component/SectionPertama";
-import AyatDoa from "./sub-component/ayatDoa";
+import AyatDoa from "./sub-component/AyatDoa";
 import RangkaianAcaraAdat from "./sub-component/RangkaianAcaraAdat";
 
 function HalUndangan() {
